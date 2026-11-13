@@ -1,0 +1,287 @@
+/* Project page foundation
+   Same structure as the TACT page: two "screens" with a narrow text column
+   beside a cluster of frames, a central statement, related work and a footer.
+   Placeholders (dashed boxes, [square brackets]) are replaced with real content later. */
+
+@font-face {
+  font-family: "Literata";
+  src: url("fonts/Literata.woff2") format("woff2");
+  font-weight: 200 900;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Atkinson Hyperlegible Next";
+  src: url("fonts/AtkinsonHyperlegibleNext.woff2") format("woff2");
+  font-weight: 200 800;
+  font-display: swap;
+}
+
+:root {
+  --paper: #fbfaf8;
+  --ink: #141418;
+  --soft: #55555f;
+  --indigo: #26307f;
+  --lilac: #b3add8;
+  --rule: rgba(38, 48, 127, 0.16);
+  --concept: #8a5a2b;
+  --head: "Literata", Georgia, serif;
+  --text: "Atkinson Hyperlegible Next", system-ui, sans-serif;
+}
+
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--text);
+  font-size: 15px;
+  line-height: 1.58;
+  letter-spacing: 0.015em;
+}
+a { color: inherit; text-underline-offset: 0.2em; text-decoration-thickness: 1px; }
+a:focus-visible, button:focus-visible, .zoomable:focus-visible { outline: 2px solid var(--indigo); outline-offset: 2px; }
+img, video { display: block; max-width: 100%; }
+p { margin: 0 0 0.9em; }
+figure { margin: 0; }
+
+/* ---------- Page frame ---------- */
+.page { max-width: 1340px; margin: 0 auto; padding: 28px 48px 24px; }
+@media (min-width: 1000px) { .page { zoom: 0.825; } }   /* desktop shown at 82.5% */
+
+.top { margin-bottom: 24px; font-size: 14px; }
+.top a { text-decoration: none; }
+.top a:hover { text-decoration: underline; }
+
+/* one "screen": text column + cluster of frames */
+.sheet {
+  display: grid;
+  grid-template-columns: minmax(0, 400px) minmax(0, 1fr);
+  gap: clamp(40px, 5vw, 88px);
+  align-items: start;
+}
+.sheet > .cluster { display: grid; gap: 16px; justify-self: end; width: 100%; max-width: 680px; }
+
+/* ---------- Text column ---------- */
+.col h1, .col h2, .cluster-title {
+  margin: 0;
+  font-family: var(--text);
+  font-size: 15.5px;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+}
+.col h2 { margin-top: 1.3em; }
+.col h2:first-child { margin-top: 0; }
+.col h2 + p, .col h2 + ol { margin-top: 0.35em; }
+.sub { margin: 0 0 1.1em; color: var(--soft); }
+
+/* the thread line under the title: one indigo thread with a short lilac stretch (not a weave) */
+.thread {
+  width: 120px;
+  height: 3px;
+  margin: 0 0 1.4em;
+  background: linear-gradient(90deg, var(--indigo) 0 62%, var(--lilac) 62% 100%);
+  opacity: 0.85;
+}
+
+.lead { font-family: var(--head); font-size: 18px; line-height: 1.45; color: var(--indigo); }
+.rq { font-family: var(--head); font-style: italic; font-size: 17px; line-height: 1.5; color: var(--indigo); }
+.stages { list-style: none; margin: 0.4em 0 0; padding: 0; }
+.stages li { margin-bottom: 0.8em; }
+.small { font-size: 14px; color: var(--soft); }
+
+ol.qs { margin: 0; padding-left: 1.3em; }
+ol.qs li { margin-bottom: 0.7em; padding-left: 0.2em; }
+.qs b { font-weight: 700; }
+
+/* ---------- Labels: staged / speculative ---------- */
+.note {
+  font-size: 11.5px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--indigo);
+}
+.note.concept { color: var(--concept); }
+figcaption, .mosaic-caption { margin: 8px 0 0; font-size: 12.5px; line-height: 1.5; color: var(--soft); }
+
+/* ---------- Frames and placeholders ---------- */
+.frame { position: relative; overflow: hidden; background: #fff; outline: 1px solid var(--rule); outline-offset: -1px; }
+.frame img, .frame video { width: 100%; height: 100%; object-fit: cover; }
+.r32 { aspect-ratio: 3 / 2; width: 100%; }
+.r43 { aspect-ratio: 4 / 3; }
+
+.placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px;
+  text-align: center;
+  font-size: 13px;
+  color: var(--soft);
+  background: #f3f1f6;
+  outline: 1px dashed rgba(20, 20, 24, 0.28);
+  outline-offset: -1px;
+}
+
+/* ---------- Slideshow: a quiet fade between screen captures ---------- */
+.slides .slide { position: absolute; inset: 0; width: 100%; height: 100%; opacity: 0; transition: opacity 900ms ease; }
+.slides .slide.on { opacity: 1; z-index: 1; }
+@media (prefers-reduced-motion: reduce) { .slides .slide { transition: none; } }
+
+.slidebar { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; margin-top: 6px; }
+.try { color: var(--indigo); font-weight: 700; font-size: 15px; letter-spacing: 0.02em; text-decoration: none; white-space: nowrap; }
+.try:hover { text-decoration: underline; text-underline-offset: 0.25em; }
+.controls { display: flex; align-items: center; gap: 4px; flex-shrink: 0; font-size: 14px; }
+.controls button { border: 0; background: none; padding: 6px 9px; font: inherit; color: var(--ink); cursor: pointer; }
+.controls .count { min-width: 2.6em; text-align: center; font-variant-numeric: tabular-nums; }
+
+/* ---------- Prototype in use: a mosaic of tiles ---------- */
+.in-use .cluster-title { margin: 0 0 6px; font-size: 13px; }
+.mosaic { display: grid; grid-template-columns: repeat(6, 1fr); grid-auto-rows: 58px; gap: 8px; }
+.tile { position: relative; overflow: hidden; background: #ece9f1; }
+.tile img, .tile video { width: 100%; height: 100%; object-fit: cover; }
+.t-a { grid-column: 1 / 5; grid-row: 1 / 6; }   /* large */
+.t-b { grid-column: 5 / 7; grid-row: 1 / 3; }   /* small, top */
+.t-c { grid-column: 5 / 7; grid-row: 3 / 6; }   /* small, bottom */
+.tile-label {
+  position: absolute; left: 6px; bottom: 6px;
+  padding: 2px 7px; border-radius: 3px;
+  background: rgba(251, 250, 248, 0.88);
+  font-size: 10.5px; letter-spacing: 0.03em; color: var(--indigo);
+  pointer-events: none;
+}
+
+/* hover: a tile grows a little; click: it opens large */
+.zoomable { cursor: zoom-in; transition: transform 350ms ease, box-shadow 350ms ease; }
+.zoomable:hover, .zoomable:focus-visible { transform: scale(1.05); z-index: 2; box-shadow: 0 10px 28px rgba(20, 20, 24, 0.18); }
+.frame.zoomable:hover { transform: scale(1.02); }
+@media (prefers-reduced-motion: reduce) { .zoomable, .zoomable:hover { transition: none; transform: none; } }
+
+/* ---------- Central statement ---------- */
+.statement { margin: 56px 0 8px; padding: 72px 0 80px; border-top: 1px solid var(--rule); text-align: center; }
+.statement-label { margin: 0 0 22px; font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--soft); }
+.statement blockquote {
+  margin: 0 auto;
+  max-width: 24ch;
+  font-family: var(--head);
+  font-size: clamp(26px, 3.2vw, 40px);
+  line-height: 1.3;
+  color: var(--indigo);
+}
+.statement blockquote::after {
+  content: "";
+  display: block;
+  width: 120px; height: 3px;
+  margin: 30px auto 0;
+  background: linear-gradient(90deg, var(--indigo) 0 62%, var(--lilac) 62% 100%);
+  opacity: 0.7;
+}
+@media (min-width: 1000px) {
+  .statement blockquote { max-width: none; white-space: nowrap; font-size: clamp(22px, 2.1vw, 32px); }
+}
+
+/* ---------- Screen 2: future direction ---------- */
+.future h2 { margin-top: 0; }
+.intention {
+  margin: 14px 0 4px;
+  padding-left: 14px;
+  border-left: 2px solid var(--lilac);
+  font-family: var(--head); font-style: italic; font-size: 16.5px; line-height: 1.45; color: var(--indigo);
+}
+.intention span {
+  display: block; margin-bottom: 2px;
+  font-family: var(--text); font-style: normal; font-size: 12px; font-weight: 700; letter-spacing: 0.04em; color: var(--ink);
+}
+
+/* ---------- Related work: one row across the page ---------- */
+.related { margin-top: 44px; padding-top: 18px; border-top: 1px solid var(--rule); }
+.related .cluster-title { margin: 0 0 12px; font-size: 13px; }
+.related ol { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; margin: 0; padding: 0; list-style: none; counter-reset: rw; }
+.related li { counter-increment: rw; font-size: 13.5px; line-height: 1.45; }
+.related li::before { content: counter(rw); display: block; margin-bottom: 4px; font-size: 11px; color: var(--soft); }
+.related a { color: var(--indigo); text-decoration: none; }
+.related a:hover { text-decoration: underline; }
+
+/* ---------- Footer ---------- */
+.foot {
+  margin-top: 36px; padding-top: 14px;
+  border-top: 1px solid var(--rule);
+  display: flex; justify-content: space-between; flex-wrap: wrap; gap: 10px;
+  font-size: 13.5px; color: var(--soft);
+}
+
+/* ---------- Large view ---------- */
+.lightbox {
+  position: fixed; inset: 0; z-index: 50;
+  display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 14px;
+  padding: 48px 24px 32px;
+  background: rgba(251, 250, 248, 0.97);
+  cursor: zoom-out;
+}
+.lightbox[hidden] { display: none; }
+.lb-inner { max-width: min(1200px, 92vw); max-height: 80vh; display: flex; }
+.lb-inner img, .lb-inner video { max-width: 100%; max-height: 80vh; object-fit: contain; box-shadow: 0 12px 40px rgba(20, 20, 24, 0.18); cursor: default; }
+.lb-cap { margin: 0; text-align: center; font-size: 14px; color: var(--soft); }
+.lb-close { position: absolute; top: 14px; right: 18px; border: 0; background: none; font-size: 34px; line-height: 1; color: var(--indigo); cursor: pointer; }
+
+/* ---------- Tablet and phone ---------- */
+@media (max-width: 900px) {
+  body { font-size: 16px; }
+  .page { padding: 32px 24px 44px; }
+  .top { margin-bottom: 40px; }
+  .sheet { grid-template-columns: 1fr; gap: 28px; }
+  .sheet > .cluster { justify-self: stretch; max-width: none; }
+  .statement { margin-top: 48px; padding: 48px 0 56px; }
+}
+@media (max-width: 760px) { .related ol { grid-template-columns: 1fr; gap: 14px; } }
+@media (max-width: 480px) {
+  .page { padding: 28px 16px 40px; }
+  .mosaic { grid-auto-rows: 40px; gap: 6px; }
+  .slidebar { flex-wrap: wrap; }
+}
+
+/* ---------- SafeSpace layout: recording on top, two scenario pictures under it ---------- */
+.rec video { object-fit: contain; background: #f3f1f6; }   /* a phone-shaped recording sits centred, not cropped */
+/* temporary app screenshots: phone screens shown whole on a soft background */
+.strip { display: flex; justify-content: center; gap: 4%; padding: 3% 4%; background: #efede8; }
+.strip img { width: auto; height: 100%; max-width: 30%; object-fit: contain; box-shadow: 0 4px 16px rgba(20, 20, 24, 0.12); border-radius: 6px; }
+.shot { background: #efede8; }
+.shot img { object-fit: contain; padding: 4%; }
+
+/* the whole first screen fits the window: the pictures shrink with the window height */
+@media (min-width: 901px) {
+  .page { padding-top: 20px; }
+  .top { margin-bottom: 14px; }
+  .pics {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 3fr 2fr;
+    gap: 12px;
+    height: calc((100vh - 90px) / 0.825);   /* /0.825 undoes the desktop zoom */
+    max-height: 820px;
+  }
+  .pics .rec { grid-column: 1 / 3; }
+  .sheet .col h2 { margin-top: 1em; }
+  .sheet .col .stages li { margin-bottom: 0.5em; }
+  .sheet .try { display: inline-block; margin-top: 4px; }
+}
+@media (max-width: 900px) {
+  .pics { grid-template-columns: 1fr 1fr; gap: 8px; }
+  .pics .rec { grid-column: 1 / 3; aspect-ratio: 3 / 2; }
+  .pics .frame:not(.rec) { aspect-ratio: 4 / 3; }
+}
+
+/* half screen: three text columns side by side */
+.three { display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(28px, 4vw, 64px); }
+.three .col h2 { margin-top: 0; }
+
+/* tighter statement so the whole page is about one and a half screens */
+.statement { margin: 40px 0 0; padding: 44px 0 48px; }
+.statement blockquote::after { margin-top: 22px; }
+.related { margin-top: 32px; }
+.foot { margin-top: 24px; }
+
+@media (max-width: 900px) {
+  .three { grid-template-columns: 1fr; gap: 8px; }
+  .three .col h2 { margin-top: 1em; }
+}
+@media (max-width: 480px) { .pair { gap: 8px; } }

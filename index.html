@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SafeSpace · Mahya Mirzaee</title>
+  <meta name="description" content="SafeSpace: a conceptual LLM-based companion for newly arrived immigrant women in Germany, built from interviews and design fiction.">
+  <meta name="theme-color" content="#fbfaf8">
+  <link rel="stylesheet" href="project.css?v=5">
+</head>
+<body>
+<div class="page">
+
+  <nav class="top" aria-label="Site">
+    <a href="https://mahyamirzaee.github.io/">‹ back</a>
+  </nav>
+
+  <main>
+  <!-- ===== Screen 1: text on the left, recording + two scenario pictures on the right ===== -->
+  <section class="sheet" aria-labelledby="title">
+    <div class="col">
+      <h1 id="title">SafeSpace</h1>
+      <p class="sub">HCI Master's thesis · Analytical design fiction · 2026</p>
+      <div class="thread" aria-hidden="true"></div>
+
+      <p class="lead">A quiet AI companion for the first months in a new country: it helps you sort your thoughts, then points you towards people.</p>
+      <p>Built from interviews with eight Farsi-speaking women from Iran in their early months in Germany, many of whom already turned to ChatGPT for letters, plans and lonely evenings.</p>
+
+      <h2>Research question</h2>
+      <p class="rq">How do recently arrived immigrant women interpret and negotiate AI-mediated emotional support, and what tensions emerge?</p>
+
+      <h2>The interaction</h2>
+      <ol class="stages">
+        <li><b>01 · Reflect.</b> A private AI-assisted journal with gentle prompts; you decide how much to share.</li>
+        <li><b>02 · Recognise.</b> Anonymised stories from other women, to feel less alone without having to take part.</li>
+        <li><b>03 · Reach out.</b> A clear directory of counselling, legal and integration services.</li>
+      </ol>
+      <p class="small">Clickable prototype (Lovable). Multilingual, with right-to-left Farsi. Data stays on the device. Not evaluated with users, and not therapy.</p>
+      <a class="try" href="https://safespace-siegen.lovable.app/" target="_blank" rel="noopener">Try the live prototype ↗</a>
+    </div>
+
+    <!-- right side: only three pictures, one on top and two side by side under it -->
+    <div class="cluster pics">
+      <!-- later: <video src="video/safespace.mp4" autoplay muted loop playsinline aria-label="..."></video> -->
+      <!-- for now: three app screens in a row; later the English screen recording goes here -->
+      <div class="frame rec strip">
+        <img src="img/app-home.jpg" alt="SafeSpace home screen with three areas: Write Your Thoughts, Stories and Find Support.">
+        <img src="img/app-reflect.jpg" alt="Reflect screen, 'Your Private Space', with gentle starting prompts such as 'Today feels hard for me'.">
+        <img src="img/app-support.jpg" alt="Find Support screen listing counselling, a women's integration centre and an emergency helpline.">
+      </div>
+      <!-- for now: two app screens; later the two Neda scenario pictures go here -->
+      <div class="frame zoomable shot" data-cap="Shared Experiences: anonymous stories from women like you"><img src="img/app-stories.jpg" alt="Shared Experiences screen with anonymous stories tagged Loneliness."></div>
+      <div class="frame zoomable shot" data-cap="Onboarding: what SafeSpace is, and is not"><img src="img/app-intro.jpg" alt="Onboarding screen: a private space to reflect; not a therapist; your reflections are private."></div>
+    </div>
+  </section>
+
+  <!-- ===== Central statement ===== -->
+  <section class="statement" aria-labelledby="statement-label">
+    <p class="statement-label" id="statement-label">Situated context</p>
+    <blockquote>What if an AI companion knew where its care ends?</blockquote>
+  </section>
+
+  <!-- ===== Half screen: context, questions, reflection + future in three columns ===== -->
+  <section class="three" aria-labelledby="context">
+    <div class="col">
+      <h2 id="context">The early months of migration</h2>
+      <p>Official letters in a new language, family far away who must not worry, few people nearby. In that gap an AI chat is always open. SafeSpace treats it as one bounded layer of support, next to people, not instead of them.</p>
+    </div>
+    <div class="col">
+      <h2>Questions</h2>
+      <ol class="qs">
+        <li><b>Expression.</b> Can writing to an AI be a rehearsal for talking to people?</li>
+        <li><b>Memory.</b> When does being remembered start to feel like being tracked?</li>
+        <li><b>Warmth.</b> When does comfort from a machine start to feel hollow?</li>
+      </ol>
+    </div>
+    <div class="col">
+      <h2>Reflection and next step</h2>
+      <p>An exploratory artefact from a small group in Siegen, not a validated intervention. Next: designing the bridge from private reflection to community, without losing control or trust.</p>
+    </div>
+  </section>
+
+  <section class="related" aria-labelledby="related-title">
+    <h2 class="cluster-title" id="related-title">Related work</h2>
+    <ol>
+      <li><a href="https://doi.org/10.1016/j.ijhcs.2021.102630" target="_blank" rel="noopener">The human side of human-chatbot interaction: A systematic literature review of ten years of research on text-based chatbots</a></li>
+      <li><a href="https://doi.org/10.1145/3290605.3300680" target="_blank" rel="noopener">Beyond dyadic interactions: Considering chatbots as community members</a></li>
+      <li><a href="https://doi.org/10.1016/j.intcom.2006.02.001" target="_blank" rel="noopener">Pastiche scenarios: Fiction as a resource for user centred design</a></li>
+    </ol>
+  </section>
+  </main>
+
+  <footer class="foot">
+    <span>Implemented: a clickable web prototype with local data storage. Grounded in eight qualitative interviews; not evaluated with users.</span>
+    <span>Mahya Mirzaee, 2026</span>
+  </footer>
+</div>
+
+<script>
+  // Large view: click (or Enter) on a picture or video opens it big.
+  // Close with a click anywhere, the × button, or Esc. Empty placeholders do nothing.
+  (function () {
+    var lb = document.createElement("div");
+    lb.className = "lightbox";
+    lb.hidden = true;
+    lb.setAttribute("role", "dialog");
+    lb.setAttribute("aria-modal", "true");
+    lb.setAttribute("aria-label", "Large view");
+    lb.innerHTML = '<button class="lb-close" type="button" aria-label="Close large view">×</button>' +
+                   '<div class="lb-inner"></div><p class="lb-cap"></p>';
+    document.body.appendChild(lb);
+    var inner = lb.querySelector(".lb-inner");
+    var cap = lb.querySelector(".lb-cap");
+    var closeBtn = lb.querySelector(".lb-close");
+    var opener = null;
+
+    function open(tile) {
+      var m = tile.querySelector("img, video");
+      if (!m) return;
+      var big;
+      if (m.tagName === "VIDEO") {
+        big = document.createElement("video");
+        big.src = m.getAttribute("src");
+        big.muted = true; big.loop = true; big.autoplay = true; big.playsInline = true; big.controls = true;
+      } else {
+        big = document.createElement("img");
+        big.src = m.getAttribute("src");
+        big.alt = m.getAttribute("alt") || "";
+      }
+      big.addEventListener("click", function (e) { e.stopPropagation(); });
+      inner.replaceChildren(big);
+      cap.textContent = tile.getAttribute("data-cap") || "";
+      opener = tile;
+      lb.hidden = false;
+      document.documentElement.style.overflow = "hidden";
+      closeBtn.focus();
+    }
+    function close() {
+      if (lb.hidden) return;
+      lb.hidden = true;
+      inner.replaceChildren();
+      document.documentElement.style.overflow = "";
+      if (opener) opener.focus();
+    }
+
+    document.querySelectorAll(".zoomable").forEach(function (tile) {
+      tile.tabIndex = 0;
+      tile.setAttribute("role", "button");
+      tile.setAttribute("aria-label", "Open large view");
+      tile.addEventListener("click", function () { open(tile); });
+      tile.addEventListener("keydown", function (e) {
+        if (e.key === "Enter" || e.key === " ") { e.preventDefault(); open(tile); }
+      });
+    });
+    lb.addEventListener("click", close);
+    closeBtn.addEventListener("click", function (e) { e.stopPropagation(); close(); });
+    document.addEventListener("keydown", function (e) { if (e.key === "Escape") close(); });
+  })();
+</script>
+</body>
+</html>
