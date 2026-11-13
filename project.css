@@ -390,3 +390,8 @@ figcaption, .mosaic-caption { margin: 8px 0 0; font-size: 12.5px; line-height: 1
 .sheet .col .try + h2 { margin-top: 1.2em; }
 .stages li b { color: var(--indigo); }
 .related-line { margin-top: 26px; padding-top: 14px; border-top: 1px solid var(--rule); }
+
+/* related work: titles only, in one horizontal row, no numbers */
+.related-plain { margin-top: 26px; padding-top: 14px; }
+.related-plain li::before { content: none; }
+.related-plain li { font-size: 13.5px; }
