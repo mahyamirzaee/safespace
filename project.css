@@ -252,7 +252,7 @@ figcaption, .mosaic-caption { margin: 8px 0 0; font-size: 12.5px; line-height: 1
 @media (min-width: 901px) {
   .page { padding-top: 20px; }
   .top { margin-bottom: 14px; }
-  .pics {
+  .sheet > .cluster.pics {
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 3fr 2fr;
     gap: 12px;
@@ -303,3 +303,33 @@ figcaption, .mosaic-caption { margin: 8px 0 0; font-size: 12.5px; line-height: 1
   .top { margin-bottom: 6px; }
   .sheet .col h2 { margin-top: 0.8em; }
 }
+
+/* ---------- Right side v2: video + comic, stacked, in a light hand-drawn ink frame ---------- */
+@media (min-width: 901px) {
+  .sheet > .cluster.pics {
+    display: flex; flex-direction: column; gap: 14px;
+    height: auto; max-height: none;
+    /* keep both frames inside the first screen: width follows the window height */
+    width: 100%;
+    max-width: min(680px, calc(((100vh - 40px) / 0.825 - 140px) / 1.11));
+  }
+}
+@media (max-width: 900px) { .sheet > .cluster.pics { display: flex; flex-direction: column; gap: 14px; } }
+
+/* the ink frame: a thin dark line like the comic's panels, slightly rounded, with a small playful lilac offset */
+.frame.ink {
+  outline: none;
+  border: 1.6px solid #2a2a30;
+  border-radius: 6px 9px 7px 10px;   /* a little uneven, like a hand-drawn box */
+  box-shadow: 5px 5px 0 var(--lilac);
+  background: #fbfaf8;
+}
+.vid { aspect-ratio: 1846 / 964; }              /* the recording's own shape: no blank bands */
+.vid video { object-fit: cover; }
+.comic { aspect-ratio: 1343 / 784; }
+.comic img { object-fit: cover; }
+.pics figcaption { margin-top: 9px; font-size: 12.5px; letter-spacing: 0.04em; color: var(--soft); }
+.frame.ink.zoomable:hover { transform: rotate(-0.4deg) scale(1.01); }
+
+/* text under the big statement */
+.statement-text { max-width: 62ch; margin: 22px auto 0; color: var(--soft); font-size: 15px; }
