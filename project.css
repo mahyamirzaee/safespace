@@ -369,3 +369,19 @@ figcaption, .mosaic-caption { margin: 8px 0 0; font-size: 12.5px; line-height: 1
   .pull { font-size: 15px; gap: 10px; }
   .pull span { white-space: normal; }
 }
+
+/* ---------- Second part v3: one short band, so the page needs almost no scrolling ---------- */
+.second { margin-top: 26px; padding-top: 20px; }
+.second .col p { margin: 0.35em 0 0; }
+.tensions li, .tensions li:first-child { border: 0; }
+.tensions ul { display: grid; grid-template-columns: 1fr 1fr; column-gap: 34px; row-gap: 4px; }
+.tensions li.pull { padding: 3px 0; margin: 0; font-size: 15.5px; }
+.lead b { font-weight: 600; }
+
+.related-line { margin: 22px 0 0; font-size: 13px; color: var(--soft); }
+.related-line span { margin-right: 10px; font-weight: 700; color: var(--ink); }
+.related-line a { color: var(--indigo); text-decoration: none; }
+.related-line a:hover { text-decoration: underline; }
+.foot { margin-top: 14px; padding-top: 10px; }
+
+@media (max-width: 480px) { .tensions ul { grid-template-columns: 1fr; } }
