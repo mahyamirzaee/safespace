@@ -285,3 +285,21 @@ figcaption, .mosaic-caption { margin: 8px 0 0; font-size: 12.5px; line-height: 1
   .three .col h2 { margin-top: 1em; }
 }
 @media (max-width: 480px) { .pair { gap: 8px; } }
+
+/* longer statement: let it wrap over two lines */
+@media (min-width: 1000px) {
+  .statement blockquote { white-space: normal; max-width: 40ch; font-size: clamp(22px, 2vw, 30px); }
+}
+.three .intention { margin-top: 6px; }
+
+/* the longer intro text: a wider left column so it still fits in the first screen */
+@media (min-width: 901px) {
+  .sheet { grid-template-columns: minmax(0, 500px) minmax(0, 1fr); gap: clamp(32px, 4vw, 64px); }
+  .sheet .col p { margin-bottom: 0.7em; }
+  .sheet .col .lead { margin-bottom: 0.6em; }
+}
+@media (min-width: 901px) and (max-height: 700px) {
+  .page { padding-top: 10px; }
+  .top { margin-bottom: 6px; }
+  .sheet .col h2 { margin-top: 0.8em; }
+}
