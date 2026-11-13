@@ -385,3 +385,8 @@ figcaption, .mosaic-caption { margin: 8px 0 0; font-size: 12.5px; line-height: 1
 .foot { margin-top: 14px; padding-top: 10px; }
 
 @media (max-width: 480px) { .tensions ul { grid-template-columns: 1fr; } }
+
+/* v13: all text in the left column; the explore link sits between the spaces and the research */
+.sheet .col .try + h2 { margin-top: 1.2em; }
+.stages li b { color: var(--indigo); }
+.related-line { margin-top: 26px; padding-top: 14px; border-top: 1px solid var(--rule); }
