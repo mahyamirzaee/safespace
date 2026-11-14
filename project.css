@@ -395,3 +395,6 @@ figcaption, .mosaic-caption { margin: 8px 0 0; font-size: 12.5px; line-height: 1
 .related-plain { margin-top: 26px; padding-top: 14px; }
 .related-plain li::before { content: none; }
 .related-plain li { font-size: 13.5px; }
+
+/* footer: only the name, centred */
+.foot { justify-content: center; }
