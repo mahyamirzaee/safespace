@@ -7,11 +7,34 @@
   <meta name="description" content="SafeSpace: can a machine offer a sense of belonging without ever belonging to you? An analytical design fiction about AI-mediated care.">
   <meta name="theme-color" content="#fbfaf8">
   <link rel="stylesheet" href="project.css?v=16">
+<style id="site-bar">
+  /* same top bar as the portfolio (mahyamirzaee.github.io) */
+  .site-bar { display: flex; flex-wrap: wrap; align-items: baseline; gap: 12px 24px; padding: 4px 0 26px; font-family: "Atkinson Hyperlegible Next", system-ui, sans-serif; }
+  .site-bar .sb-name { margin-right: auto; font-size: 15px; font-weight: 600; color: #141418; text-decoration: none; }
+  .site-bar nav { display: flex; flex-wrap: wrap; gap: 6px 32px; }
+  .site-bar nav a { font-size: 15px; color: #55545f; text-decoration: none; }
+  .site-bar nav a[aria-current="page"] { color: #141418; font-weight: 600; }
+  .site-bar .sb-lang { font-size: 13px; color: #55545f; text-decoration: none; padding: 2px 7px; }
+  .site-bar a:hover { color: #26307f; }
+  /* one look for every back link */
+  .top { font-size: 14px; }
+  .top a { color: #55545f; text-decoration: none; }
+  .top a:hover { color: #141418; text-decoration: underline; }
+  @media (max-width: 640px) { .site-bar .sb-name { width: 100%; } }
+</style>
 </head>
 <body>
 <div class="page">
 
-  <nav class="top" aria-label="Site">
+  <header class="site-bar">
+    <a class="sb-name" href="https://mahyamirzaee.github.io/">Mahya Mirzaee</a>
+    <nav aria-label="Main">
+      <a href="https://mahyamirzaee.github.io/projects/" aria-current="page">Design projects</a>
+      <a href="https://mahyamirzaee.github.io/publications/">Publications</a>
+    </nav>
+    <a class="sb-lang" href="https://mahyamirzaee.github.io/de/projects/" lang="de" hreflang="de" aria-label="Deutsch">DE</a>
+  </header>
+  <nav class="top" aria-label="Back">
     <a href="https://mahyamirzaee.github.io/projects/">‹ back</a>
   </nav>
 
@@ -45,8 +68,7 @@
         <div class="frame ink vid zoomable" data-cap="Prototype overview">
           <video src="video/prototype-overview.mp4" autoplay muted loop playsinline preload="auto" aria-label="Screen recording of the SafeSpace prototype: choosing a language, the home screen, Reflect, Stories and Find Support."></video>
         </div>
-        <figcaption>Prototype overview</figcaption>
-        <a class="try" href="https://safespace-siegen.lovable.app/" target="_blank" rel="noopener">Explore the artefact ↗</a>
+        <figcaption><a href="https://safespace-siegen.lovable.app/" target="_blank" rel="noopener">Prototype overview ↗</a></figcaption>
       </figure>
       <figure>
         <div class="frame ink comic zoomable" data-cap="Design fiction scenario">
