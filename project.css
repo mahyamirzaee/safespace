@@ -398,3 +398,22 @@ figcaption, .mosaic-caption { margin: 8px 0 0; font-size: 12.5px; line-height: 1
 
 /* footer: only the name, centred */
 .foot { justify-content: center; }
+
+/* ---------- Plain text (14 Nov): one font, one size, one colour, no extra design ---------- */
+body, .page, .page p, .page li, .page h1, .page h2, .page .sub, .page figcaption,
+.page .try, .page a, .page .cluster-title, .page .foot, .page .top {
+  font-family: var(--text);
+  font-size: 15px;
+  font-style: normal;
+  letter-spacing: 0.01em;
+  line-height: 1.58;
+  color: var(--ink);
+}
+.page h1, .page h2, .page .cluster-title { font-weight: 700; }
+.page .sub { margin-bottom: 1.2em; }
+.page .stages li b { color: var(--ink); }
+.page a { text-decoration: underline; text-underline-offset: 0.2em; }
+.page .top a { text-decoration: none; }
+.page .try { display: inline-block; margin-top: 6px; font-weight: 400; }
+.page .pics figcaption { margin-top: 8px; letter-spacing: 0.01em; }
+.related-plain li { font-size: 15px; }
